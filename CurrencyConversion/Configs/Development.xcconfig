@@ -1,0 +1,14 @@
+//
+//  Development.xcconfig
+//  CurrencyConversion
+//
+//  Created by Rajat Mishra on 03/12/20.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ROOT_URL = http:/{}/api.currencylayer.com
+
+APP_NAME = Currency Conversion
+APP_BUNDLE_ID = com.testdev.currencyconversion
