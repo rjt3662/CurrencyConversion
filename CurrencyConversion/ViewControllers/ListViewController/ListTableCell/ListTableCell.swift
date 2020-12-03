@@ -18,4 +18,12 @@ class ListTableCell: UITableViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.accentColor.withAlphaComponent(0.4)
+        selectedBackgroundView = selectedView
+    }
+    
+    
 }

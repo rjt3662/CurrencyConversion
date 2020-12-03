@@ -9,6 +9,7 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 ROOT_URL = http:/{}/api.currencylayer.com
+API_ACCESS_KEY = 450c636c3aafab45132eafa15a3e1450
 
 APP_NAME = Currency Conversion
 APP_BUNDLE_ID = com.testdev.currencyconversion

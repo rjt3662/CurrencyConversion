@@ -14,6 +14,7 @@ typealias ContentType = NetworkingSetup.ContentType
 struct NetworkingSetup {
     
     struct APIParameterKey {
+        static let access_key = "access_key"
     }
     
     struct HTTPHeaderField {
