@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ListViewDelegate: AnyObject {
+    func didSelect(currency: Currency, viewController: ListViewController)
+}
+
 class ListViewController: UIViewController {
     
     // MARK: - Outlets
@@ -17,6 +21,7 @@ class ListViewController: UIViewController {
     // MARK: - Properties
     private var viewModel: ListViewModel!
     private var currencies = [Currency]()
+    weak var delegate: ListViewDelegate?
     
     // MARK: - Controls
     private lazy var searchController: UISearchController = {
@@ -111,6 +116,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         listCell.textLabel?.text = currencies[indexPath.row].name
         listCell.detailTextLabel?.text = currencies[indexPath.row].code
         return listCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelect(currency: currencies[indexPath.row], viewController: self)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

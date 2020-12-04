@@ -11,12 +11,12 @@ import UIKit
 enum APIRouter: URLRequestConvertible {
     
     case currencyList
-    
+    case live
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .currencyList:
+        case .currencyList, .live:
             return .get
         }
     }
@@ -26,6 +26,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .currencyList:
             return "list"
+        case .live:
+            return "live"
         }
     }
     
@@ -40,7 +42,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Parameters
     var parameters: Parameters? {
         switch self {
-        case .currencyList:
+        case .currencyList, .live:
             return [ParameterKey.access_key: Environment.apiAccessKey]
         }
     }

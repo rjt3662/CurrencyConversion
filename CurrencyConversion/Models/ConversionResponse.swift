@@ -1,25 +1,29 @@
 //
-//  CurrencyListResponse.swift
+//  ConversionResponse.swift
 //  CurrencyConversion
 //
-//  Created by Rajat Mishra on 03/12/20.
+//  Created by Rajat Mishra on 04/12/20.
 //
 
 import Foundation
 
-struct CurrencyListResponse : Codable {
+struct ConversionResponse : Codable {
     let success : Bool?
     let terms : String?
     let privacy : String?
-    let currencies : [Currency]?
+    let timestamp : Int?
+    let source : String?
+    let exchangeRates : [ExchangeRate]?
     let error: APIError?
-
+    
     enum CodingKeys: String, CodingKey {
 
         case success = "success"
         case terms = "terms"
         case privacy = "privacy"
-        case currencies = "currencies"
+        case timestamp = "timestamp"
+        case source = "source"
+        case exchangeRates = "quotes"
         case error = "error"
     }
 
@@ -28,10 +32,12 @@ struct CurrencyListResponse : Codable {
         success = try values.decodeIfPresent(Bool.self, forKey: .success)
         terms = try values.decodeIfPresent(String.self, forKey: .terms)
         privacy = try values.decodeIfPresent(String.self, forKey: .privacy)
-        if let currencyDict = try values.decodeIfPresent(StringString.self, forKey: .currencies) {
-            currencies = Currency.getCurrencies(from: currencyDict)
+        timestamp = try values.decodeIfPresent(Int.self, forKey: .timestamp)
+        source = try values.decodeIfPresent(String.self, forKey: .source)
+        if let quoteDict = try values.decodeIfPresent(StringDouble.self, forKey: .exchangeRates) {
+            exchangeRates = ExchangeRate.getCurrencies(from: quoteDict)
         } else {
-            currencies = nil
+            exchangeRates = nil
         }
         error = try values.decodeIfPresent(APIError.self, forKey: .error)
     }

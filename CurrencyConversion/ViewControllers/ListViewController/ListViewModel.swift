@@ -30,7 +30,7 @@ class ListViewModel {
     }
     
     func fetchCurrencies(completion: @escaping ((_ result: Result<[Currency], APIError>)->Void)) {
-        APIClient.performRequest(route: APIRouter.currencyList) { [weak self] (result: Result<CurrencyListResponse, AFError>) in
+        APIClient.performRequest(route: APIRouter.currencyList) { [weak self] (result: Result<CurrencyListResponse, APIError>) in
             guard let self = self else { return }
             switch result {
             case .success(let responseData):
@@ -42,11 +42,7 @@ class ListViewModel {
                 }
                 break
             case .failure(let error):
-                if let nsError = error.underlyingError as NSError? {
-                    completion(.failure(APIError(code: nsError.code, type: nsError.domain, info: nsError.localizedDescription)))
-                } else {
-                    completion(.failure(APIError(code: error.responseCode ?? -1, type: error.responseContentType ?? "", info: error.errorDescription ?? "")))
-                }
+                completion(.failure(error))
             }
         }
     }

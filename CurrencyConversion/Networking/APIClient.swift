@@ -10,7 +10,7 @@ import Alamofire
 
 struct APIClient {
     
-    static func performRequest<T: Decodable>(route: APIRouter, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, AFError>) -> Void) {
+    static func performRequest<T: Decodable>(route: APIRouter, decoder: JSONDecoder = JSONDecoder(), completion: @escaping (Result<T, APIError>) -> Void) {
         print("Request: ")
         debugPrint(route.urlRequest!)
         if let headers = route.urlRequest?.headers {
@@ -21,7 +21,12 @@ struct APIClient {
         }
         
         func handle(response: DataResponse<T, AFError>) {
-            completion(response.result)
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(APIError(from: error)))
+            }
             if let data = response.data {
                 print("Response: ")
                 let responseString = String(data: data, encoding: .utf8) ?? ""
@@ -30,7 +35,7 @@ struct APIClient {
         }
         
         AF.request(route)
-            .responseDecodable (decoder: decoder){ (response: DataResponse<T, AFError>) in
+            .responseDecodable (decoder: decoder) { (response: DataResponse<T, AFError>) in
                 handle(response: response)
         }
     }

@@ -8,6 +8,7 @@
 import UIKit
 
 typealias StringString = [String: String]
+typealias StringDouble = [String: Double]
 
 extension UIColor {
     
@@ -15,4 +16,8 @@ extension UIColor {
         return UIColor(named: "AccentColor")!
     }
     
+}
+
+enum SegueIdentifiers {
+    static let ShowListVC = "ShowListVC"
 }
