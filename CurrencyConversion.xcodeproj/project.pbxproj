@@ -32,6 +32,7 @@
 		ABC00C292579FB0500EA6B97 /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC00C282579FB0500EA6B97 /* ExchangeRate.swift */; };
 		ABC00C32257A037E00EA6B97 /* ConversionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC00C30257A037E00EA6B97 /* ConversionCollectionCell.swift */; };
 		ABC00C33257A037E00EA6B97 /* ConversionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC00C31257A037E00EA6B97 /* ConversionCollectionCell.xib */; };
+		ABC00C37257A0C0600EA6B97 /* CurrencyExchangeRateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC00C36257A0C0600EA6B97 /* CurrencyExchangeRateHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		ABC00C282579FB0500EA6B97 /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		ABC00C30257A037E00EA6B97 /* ConversionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCollectionCell.swift; sourceTree = "<group>"; };
 		ABC00C31257A037E00EA6B97 /* ConversionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversionCollectionCell.xib; sourceTree = "<group>"; };
+		ABC00C36257A0C0600EA6B97 /* CurrencyExchangeRateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeRateHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				AB9C43F72578DD5A00F01577 /* CurrencyConversion.xcdatamodeld */,
+				ABC00C36257A0C0600EA6B97 /* CurrencyExchangeRateHandler.swift */,
 			);
 			path = CoreDataHandler;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC00C37257A0C0600EA6B97 /* CurrencyExchangeRateHandler.swift in Sources */,
 				AB9AD2AA2578E43000C30AC4 /* ListViewController.swift in Sources */,
 				ABC00C32257A037E00EA6B97 /* ConversionCollectionCell.swift in Sources */,
 				AB542A8B2578F01000990046 /* Extensions.swift in Sources */,
@@ -464,7 +468,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Development;
@@ -541,7 +545,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Production;

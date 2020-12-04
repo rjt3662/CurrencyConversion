@@ -26,7 +26,7 @@ class ConversionCollectionCell: UICollectionViewCell {
     // MARK: - Methods
     func configure(with exchangeRate: ExchangeRate) {
         codeLabel.text = exchangeRate.code
-        rateLabel.text = "\(exchangeRate.rate)"
+        rateLabel.text = "\(exchangeRate.rate.toDecimal())"
     }
     
     override func layoutSubviews() {

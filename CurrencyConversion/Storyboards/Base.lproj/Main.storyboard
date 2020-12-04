@@ -7,55 +7,59 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Currency Conversion-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="7MW-5M-Cub">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConversionViewController" customModule="CurrencyConversion" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="ABD-yl-oIV" customClass="ConversionViewController" customModule="CurrencyConversion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rOv-Sl-bOg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BXv-Wc-IXW">
-                                <rect key="frame" x="10" y="20" width="394" height="94.5"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TSv-GP-ybB">
+                                <rect key="frame" x="10" y="10" width="394" height="92"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZl-4M-qW7">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yJt-n7-Mes">
-                                        <rect key="frame" x="0.0" y="25.5" width="394" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="UI6-Yp-hh6">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Name &amp; Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="763-qR-cgP">
-                                                <rect key="frame" x="0.0" y="0.0" width="165" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-4b-cm9">
+                                                <rect key="frame" x="0.0" y="0.0" width="151.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kk-gS-dio">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-RJ-qDK">
                                                 <rect key="frame" x="274" y="0.0" width="120" height="30"/>
-                                                <state key="normal" title="Change Currency"/>
+                                                <state key="normal" title="Change Currency">
+                                                    <color key="titleColor" name="AccentColor"/>
+                                                </state>
                                                 <connections>
-                                                    <action selector="didTapSelectCountryBarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wqb-1T-spf"/>
+                                                    <action selector="didTapSelectCountryBarButton:" destination="ABD-yl-oIV" eventType="touchUpInside" id="0lx-WS-oBW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8eN-hP-b8J">
-                                        <rect key="frame" x="0.0" y="60.5" width="394" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Name &amp; Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KW5-9x-SBR">
+                                        <rect key="frame" x="0.0" y="35" width="394" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="84y-ul-3gy">
+                                        <rect key="frame" x="0.0" y="58" width="394" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZyP-nB-fG5">
-                                                <rect key="frame" x="0.0" y="0.0" width="258" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount (Default = 1.0)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsc-p2-y0P">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
+                                                <connections>
+                                                    <action selector="amountTextFieldEditingChanged:" destination="ABD-yl-oIV" eventType="editingChanged" id="elN-wB-9sN"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVT-ku-51d">
-                                                <rect key="frame" x="263" y="0.0" width="131" height="34"/>
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sed-ER-tr0">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
@@ -63,69 +67,99 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tTe-bW-vdj">
-                                <rect key="frame" x="0.0" y="124.5" width="414" height="600.5"/>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QEl-q9-xJ9">
+                                <rect key="frame" x="0.0" y="112" width="414" height="662"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Q0-9v-HZy">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4gN-aF-ssX">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nYn-BS-5aA">
-                                        <rect key="frame" x="10" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HiM-i7-ANO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="WC4-1b-dxe"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bWW-bW-Ok1"/>
+                                    <outlet property="dataSource" destination="ABD-yl-oIV" id="9jO-wA-hEl"/>
+                                    <outlet property="delegate" destination="ABD-yl-oIV" id="qHU-dz-8jI"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iX5-uN-9s2">
+                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="E06-mw-fNx">
+                                <rect key="frame" x="20" y="314.5" width="374" height="179.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent_logo" translatesAutoresizingMaskIntoConstraints="NO" id="BGg-gT-pHH">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="99"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9In-Ua-hot">
+                                        <rect key="frame" x="0.0" y="105" width="374" height="38.5"/>
+                                        <string key="text">No currency selected.
+Please select currency to perform conversion</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjI-Hr-S1h">
+                                        <rect key="frame" x="0.0" y="149.5" width="374" height="30"/>
+                                        <state key="normal" title="Select Currency">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapSelectCountryBarButton:" destination="ABD-yl-oIV" eventType="touchUpInside" id="qbX-WD-GhM"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDh-5q-DY2">
+                                        <rect key="frame" x="0.0" y="179.5" width="374" height="0.0"/>
+                                        <state key="normal" title="Retry">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapRetryButton:" destination="ABD-yl-oIV" eventType="touchUpInside" id="OV6-ni-8vz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="xJb-H5-EZr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tTe-bW-vdj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Nt-w8-TbR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tTe-bW-vdj" secondAttribute="bottom" id="2R4-3Y-Lfz"/>
-                            <constraint firstItem="BXv-Wc-IXW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="4rz-LP-KIE"/>
-                            <constraint firstItem="BXv-Wc-IXW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="97U-Z9-kJH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BXv-Wc-IXW" secondAttribute="trailing" constant="10" id="Y5a-Zk-N88"/>
-                            <constraint firstItem="tTe-bW-vdj" firstAttribute="top" secondItem="BXv-Wc-IXW" secondAttribute="bottom" constant="10" id="Zwk-df-XPT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tTe-bW-vdj" secondAttribute="trailing" id="ogr-sr-OjI"/>
+                            <constraint firstItem="TSv-GP-ybB" firstAttribute="leading" secondItem="xJb-H5-EZr" secondAttribute="leading" constant="10" id="1n6-LK-CSs"/>
+                            <constraint firstItem="QEl-q9-xJ9" firstAttribute="leading" secondItem="xJb-H5-EZr" secondAttribute="leading" id="AbX-em-kAj"/>
+                            <constraint firstItem="E06-mw-fNx" firstAttribute="centerY" secondItem="rOv-Sl-bOg" secondAttribute="centerY" id="I0Z-Zn-V7Q"/>
+                            <constraint firstItem="xJb-H5-EZr" firstAttribute="trailing" secondItem="TSv-GP-ybB" secondAttribute="trailing" constant="10" id="IZ5-S7-HX1"/>
+                            <constraint firstItem="TSv-GP-ybB" firstAttribute="top" secondItem="xJb-H5-EZr" secondAttribute="top" constant="10" id="NZN-Ww-26L"/>
+                            <constraint firstItem="iX5-uN-9s2" firstAttribute="centerY" secondItem="rOv-Sl-bOg" secondAttribute="centerY" id="X7p-zk-m0p"/>
+                            <constraint firstItem="xJb-H5-EZr" firstAttribute="bottom" secondItem="QEl-q9-xJ9" secondAttribute="bottom" id="fXg-0J-mCl"/>
+                            <constraint firstItem="xJb-H5-EZr" firstAttribute="trailing" secondItem="E06-mw-fNx" secondAttribute="trailing" constant="20" id="lar-GF-4N7"/>
+                            <constraint firstItem="xJb-H5-EZr" firstAttribute="trailing" secondItem="QEl-q9-xJ9" secondAttribute="trailing" id="n35-rw-6PH"/>
+                            <constraint firstItem="E06-mw-fNx" firstAttribute="leading" secondItem="xJb-H5-EZr" secondAttribute="leading" constant="20" id="qdf-E5-rN7"/>
+                            <constraint firstItem="iX5-uN-9s2" firstAttribute="centerX" secondItem="rOv-Sl-bOg" secondAttribute="centerX" id="sRH-Bt-IW3"/>
+                            <constraint firstItem="QEl-q9-xJ9" firstAttribute="top" secondItem="TSv-GP-ybB" secondAttribute="bottom" constant="10" id="y8V-nT-McA"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4SS-b5-cZt"/>
-                        <barButtonItem title="Select Currency" id="tG9-3z-FKz">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="didTapChangeCountryBarButton:" destination="BYZ-38-t0r" id="ntA-xq-mZs"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Gsc-gH-fPb"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Currency Conversion" id="xwJ-lx-Qfu"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Currency Conversion" id="8fd-4N-JHk"/>
                     <connections>
-                        <outlet property="containerStackView" destination="BXv-Wc-IXW" id="O4Y-b1-5aH"/>
-                        <outlet property="exchangeRatesCollectionView" destination="tTe-bW-vdj" id="Z4I-vj-i8K"/>
-                        <segue destination="ZIY-hr-zq5" kind="modal" identifier="ShowListVC" modalPresentationStyle="fullScreen" id="5i1-Tv-8gC"/>
+                        <outlet property="amountTextField" destination="bsc-p2-y0P" id="yk0-dl-qZI"/>
+                        <outlet property="containerStackView" destination="TSv-GP-ybB" id="AeL-yn-ULv"/>
+                        <outlet property="errorMessageLabel" destination="9In-Ua-hot" id="ROe-cn-mbk"/>
+                        <outlet property="exchangeRatesCollectionView" destination="QEl-q9-xJ9" id="gJS-0p-pcJ"/>
+                        <outlet property="loadinIndicatorView" destination="iX5-uN-9s2" id="obS-Y3-LhD"/>
+                        <outlet property="noCurrencySelectedStackView" destination="E06-mw-fNx" id="qna-6Z-ekb"/>
+                        <outlet property="retryButton" destination="pDh-5q-DY2" id="2Jm-LB-MML"/>
+                        <outlet property="selectCurrencyButton" destination="yjI-Hr-S1h" id="SR2-BD-4tY"/>
+                        <outlet property="selectedCurrencyNameCodeLabel" destination="KW5-9x-SBR" id="BSF-fq-jza"/>
+                        <segue destination="ZIY-hr-zq5" kind="presentation" identifier="ShowListVC" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="QQB-eP-uhy"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3c-f4-28v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="114.50892857142857"/>
+            <point key="canvasLocation" x="1040.5797101449275" y="114.50892857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xbp-Pp-Egu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="0He-3J-TDS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0He-3J-TDS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="HB5-Oq-VqU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -137,12 +171,11 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="r3Q-dp-OwL">
-                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="AccentColor"/>
                     </toolbar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="C9L-3N-385"/>
+                        <segue destination="ABD-yl-oIV" kind="relationship" relationship="rootViewController" id="Kmc-wO-W7d"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZ3-pA-yY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -230,6 +263,7 @@
     </scenes>
     <resources>
         <image name="cancel" width="16" height="16"/>
+        <image name="transparent_logo" width="102.5" height="99"/>
         <namedColor name="AccentColor">
             <color red="0.20392156862745098" green="0.74117647058823533" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

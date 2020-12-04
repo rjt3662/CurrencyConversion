@@ -12,6 +12,13 @@ class ConversionViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var exchangeRatesCollectionView: UICollectionView!
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var selectedCurrencyNameCodeLabel: UILabel!
+    @IBOutlet weak var noCurrencySelectedStackView: UIStackView!
+    @IBOutlet weak var loadinIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var retryButton: UIButton!
+    @IBOutlet weak var selectCurrencyButton: UIButton!
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     // MARK: - Properties
     private var viewModel: ConversionViewModel!
@@ -22,16 +29,7 @@ class ConversionViewController: UIViewController {
         super.viewDidLoad()
         exchangeRatesCollectionView.register(ConversionCollectionCell.getNib(), forCellWithReuseIdentifier: ConversionCollectionCell.identifier)
         viewModel = ConversionViewModel()
-        viewModel.fetchConversionRates { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let rates):
-                self.exchangeRates = rates
-                self.exchangeRatesCollectionView.reloadSections(IndexSet([0]))
-            case .failure(let error):
-                print(error)
-            }
-        }
+        handleDataRefresh()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,13 +43,69 @@ class ConversionViewController: UIViewController {
         self.performSegue(withIdentifier: SegueIdentifiers.ShowListVC, sender: nil)
     }
     
-    @IBAction func didTapChangeCountryBarButton(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: SegueIdentifiers.ShowListVC, sender: nil)
+    @IBAction func didTapRetryButton(_ sender: UIButton) {
+        self.fetchCurrencyConversion()
+    }
+    
+    @IBAction func amountTextFieldEditingChanged(_ sender: UITextField) {
+        self.exchangeRates = viewModel.getExchangeRates(for: Double(sender.text ?? "") ?? 1.0)
+        self.exchangeRatesCollectionView.reloadData()
     }
     
     // MARK: - Other Methods
-    private func updateUI() {
-        self.containerStackView.isHidden = viewModel.selectedCurrency == nil
+    private func updateUI(dataState: DataState) {
+        self.loadinIndicatorView.stopAnimating()
+        self.retryButton.isHidden = true
+        switch dataState {
+        case .loading:
+            loadinIndicatorView.startAnimating()
+            self.noCurrencySelectedStackView.isHidden = true
+        case .empty:
+            self.containerStackView.isHidden = true
+            self.exchangeRatesCollectionView.isHidden = true
+            self.noCurrencySelectedStackView.isHidden = false
+        case .error:
+            self.retryButton.isHidden = false
+            self.containerStackView.isHidden = true
+            self.exchangeRatesCollectionView.isHidden = true
+            self.noCurrencySelectedStackView.isHidden = false
+        case .dataPresent:
+            self.containerStackView.isHidden = false
+            self.exchangeRatesCollectionView.isHidden = false
+            self.noCurrencySelectedStackView.isHidden = true
+        }
+        
+        
+        if let currency = viewModel.selectedCurrency {
+            self.selectedCurrencyNameCodeLabel.text = "\(currency.code) - \(currency.name)"
+        }
+    }
+    
+    fileprivate func fetchCurrencyConversion() {
+        updateUI(dataState: .loading)
+        viewModel.fetchConversionRates { [weak self] (result) in
+            guard let self = self else { return }
+            self.handleResult(result)
+        }
+    }
+    
+    fileprivate func handleDataRefresh() {
+        viewModel.dataRefreshedCompletion = { [weak self] result in
+            self?.handleResult(result)
+        }
+    }
+    
+    fileprivate func handleResult(_ result: Result<[ExchangeRate], APIError>) {
+        switch result {
+        case .success(_):
+            self.exchangeRates = self.viewModel.getExchangeRates(for: Double(self.amountTextField.text ?? "") ?? 1.0)
+            self.exchangeRatesCollectionView.reloadData()
+            self.updateUI(dataState: .dataPresent)
+        case .failure(let error):
+            self.errorMessageLabel.text = error.info
+            self.updateUI(dataState: .error)
+        }
+        
     }
     
 }
@@ -60,8 +114,10 @@ extension ConversionViewController: ListViewDelegate {
     
     func didSelect(currency: Currency, viewController: ListViewController) {
         viewModel.selectedCurrency = currency
-        viewController.dismiss(animated: true, completion: nil)
-        updateUI()
+        viewController.dismissSelf { [weak self] in
+            guard let self = self else { return }
+            self.fetchCurrencyConversion()
+        }
     }
     
 }

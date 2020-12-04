@@ -9,10 +9,11 @@ import Foundation
 
 struct ExchangeRate: Codable {
     
-    let code: String
-    let rate: Double
+    var code: String
+    var rate: Double
     
     static func getCurrencies(from dictionary: StringDouble) -> [ExchangeRate] {
-        return dictionary.map({ ExchangeRate(code: $0.key.replacingOccurrences(of: "USD", with: ""), rate: $0.value) })
+        let dollar = CurrencyCode.dollar.rawValue
+        return dictionary.map({ ExchangeRate(code: $0.key == "USDUSD" ? dollar : $0.key.replacingOccurrences(of: dollar, with: ""), rate: $0.value) })
     }
 }

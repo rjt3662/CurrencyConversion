@@ -34,10 +34,18 @@ class ListViewController: UIViewController {
         return searchController
     }()
     
+    private lazy var tableRefreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(tableRefreshControlStateChanged(_:)), for: .valueChanged)
+        control.tintColor = .white
+        return control
+    }()
+    
     // MARK: - View Load Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppearance()
+        currencyListTableView.refreshControl = tableRefreshControl
         navigationItem.searchController = searchController
         currencyListTableView.register(ListTableCell.getNib(), forCellReuseIdentifier: ListTableCell.identifier)
         viewModel = ListViewModel()
@@ -59,12 +67,16 @@ class ListViewController: UIViewController {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
     }
-    private func fetchCurrencies() {
-        loadingIndicatorView.startAnimating()
+    
+    private func fetchCurrencies(isPullToRefresh: Bool = false) {
+        if !isPullToRefresh {
+            loadingIndicatorView.startAnimating()
+        }
         errorMessageLabel.text = ""
         viewModel.fetchCurrencies { [weak self] (result) in
             guard let self = self else { return }
             self.loadingIndicatorView.stopAnimating()
+            self.tableRefreshControl.endRefreshing()
             switch result {
             case .success(let currencies):
                 self.currencies = currencies
@@ -78,6 +90,15 @@ class ListViewController: UIViewController {
     // MARK: - Handle Button Actions
     @IBAction func didTapCloseBarButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func tableRefreshControlStateChanged(_ control: UIRefreshControl) {
+        fetchCurrencies(isPullToRefresh: true)
+    }
+    
+    func dismissSelf(completion: (() -> Void)?) {
+        searchController.isActive = false
+        dismiss(animated: true, completion: completion)
     }
     
 }
